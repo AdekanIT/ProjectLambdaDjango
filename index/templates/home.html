@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Main</title>
+</head>
+<body>
+<h1>Main page</h1>
+<hr>
+{% if user.is_authenticated %}
+<form action="{% url 'logout' %}" method="post">
+    {% csrf_token %}
+    <button type="submit">Log Out</button>
+</form>
+{% else %}
+<form action="register" method="post">
+    {% csrf_token %}
+    <button type="submit">Sign Up</button>
+</form>
+<form action="{% url 'login' %}" method="post">
+    {% csrf_token %}
+    <button type="submit">Log In</button>
+</form>
+{% endif %}
+<hr>
+<form action="search" method="POST">
+    {% csrf_token %}
+    <input type="text" name="search_product">
+    <button>Search</button>
+</form>
+Products: <br>
+{% for i in product %}
+<a href="/product/{{ i.id }}">{{ i.pr_name }}</a><br>
+{% endfor %}
+<hr>
+Category: <br>
+{% for i in category %}
+<a href="/category/{{ i.id }}">{{ i.name }}</a><br>
+{% endfor %}
+<hr>
+<a href="/contact-us">Contact</a>
+<a href="/about-us">About us</a>
+</body>
+</html>

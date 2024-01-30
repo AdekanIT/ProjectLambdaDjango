@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Info product</title>
+</head>
+<body>
+<h1>{{ product.pr_name }}</h1>
+<hr>
+<b>Count:</b> {{ product.pr_count }}<br>
+<b>Description</b>: {{ product.pr_des }}<br>
+<b>Category</b>:<a href="/category/{{ product.category_name.id }}">{{ product.category_name }}</a><br>
+<b>Price:</b> {{ product.pr_price }}<br>
+
+<hr>
+<a href="/">Home paige</a>
+</body>
+</html>
